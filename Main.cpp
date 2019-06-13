@@ -19,9 +19,10 @@ int main()
 	string message1 = "log message 1 ...";
 	string message2 = "log message 2 ...";
 	int nNum = 10;
-	SimpleLogging::Instance()->Log("message to be logged");
-	SimpleLogging::Instance()->Log(message1);
-	SimpleLogging::Instance()->Log("Message is:%s Number is:%d", message2.c_str(), nNum);
-	SimpleLogging::Instance()->Log("Monster HP is %d", 15);
-
+	//SimpleLogging::Instance()->Log("message to be logged");
+	//SimpleLogging::Instance()->Log(message1);
+	//SimpleLogging::Instance()->Log("Message is:%s Number is:%d", message2.c_str(), nNum);
+	SimpleLogging::Instance()->Log(SimpleLogging::INFO, "Monster HP is %d", 15);
+	SimpleLogging::Instance()->Log(SimpleLogging::WARNING, "Warning Message..");
+	SimpleLogging::Instance()->Log(SimpleLogging::ERROR, "Warning Message..");
 }

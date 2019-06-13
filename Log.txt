@@ -46,3 +46,18 @@
 2019-06-13.21:12:18:log message 1 ...
 2019-06-13.21:12:18:Message is:log message 2 ... Number is:10
 2019-06-13.21:12:18:Monster HP is 15
+2019-06-13.21:33:38:message to be logged
+2019-06-13.21:33:38:log message 1 ...
+2019-06-13.21:33:38:Message is:log message 2 ... Number is:10
+2019-06-13.21:33:38:Monster HP is 15
+[2] 2019-06-13.22:06:22:Monster HP is 15
+[INFO] 2019-06-13.22:26:34:Monster HP is 15
+[INFO] 2019-06-13.22:27:25:Monster HP is 15
+[INFO] 2019-06-13.22:27:54:Monster HP is 15
+[INFO] 2019-06-13.22:28:22 : Monster HP is 15
+[INFO] 2019-06-13.22:30:14 : Monster HP is 15
+[WARNING] 2019-06-13.22:30:14 : Warning Message..
+[ERROR] 2019-06-13.22:30:14 : ERROR Message..
+[INFO] 2019-06-13.22:50:28 : Monster HP is 15
+[WARNING] 2019-06-13.22:50:28 : Warning Message..
+[ERROR] 2019-06-13.22:50:28 : Warning Message..

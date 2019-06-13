@@ -1,5 +1,7 @@
 #include "SimpleLogging.hpp"
 #include "Utilities.hpp"
+#include "CWStd.hpp"
+
 
 const string SimpleLogging::m_filename = "Log.txt";
 SimpleLogging* SimpleLogging::instance_ = nullptr;
@@ -19,24 +21,46 @@ SimpleLogging* SimpleLogging::Instance() {
 }
 
 
-void SimpleLogging::Log(const string& t_message)
+void SimpleLogging::Log(LogLevel t_logLevel, const string& t_message)
 {
-	cout << Util::CurrentDateTime() << ":" << t_message << endl;
-	m_logfile << Util::CurrentDateTime() << ":" << t_message << endl;
+	string logLevel;
+
+	switch (t_logLevel)
+	{
+	case SimpleLogging::ERROR: logLevel = "ERROR"; break;
+	case SimpleLogging::WARNING: logLevel = "WARNING"; break;
+	case SimpleLogging::INFO: logLevel = "INFO"; break;
+	default:
+		break;
+	}
+	
+	cout << "[" << logLevel << "] " << Util::CurrentDateTime() << " : " << t_message << endl;
+	m_logfile << "[" << logLevel << "] " << Util::CurrentDateTime() << " : " << t_message << endl;
+	
 }
 
-void SimpleLogging::Log(const char* format, ...)
+void SimpleLogging::Log(LogLevel t_logLevel, const char* t_format, ...)
 {
+	string logLevel;
 	char* message = NULL;
 	int nLength = 0;
 	va_list args;
-	va_start(args, format);
-	nLength = _vscprintf(format, args) + 1;
+	va_start(args, t_format);
+	nLength = _vscprintf(t_format, args) + 1;
 	message = new char[nLength];
-	vsprintf_s(message, nLength, format, args);
-	//vsprintf(message, format, args);
-	cout << Util::CurrentDateTime() << ":" << message << endl;
-	m_logfile << Util::CurrentDateTime() << ":" << message << endl;
+	vsprintf_s(message, nLength, t_format, args); 
+
+	switch (t_logLevel)
+	{
+	case SimpleLogging::ERROR: logLevel = "ERROR"; break;
+	case SimpleLogging::WARNING: logLevel = "WARNING"; break;
+	case SimpleLogging::INFO: logLevel = "INFO"; break;
+	default:
+		break;
+	}
+
+	cout << "[" << logLevel << "] " << Util::CurrentDateTime() << " : " << message << endl;
+	m_logfile << "[" << logLevel << "] " << Util::CurrentDateTime() << " : " << message << endl;
 	va_end(args);
 
 	delete[] message;

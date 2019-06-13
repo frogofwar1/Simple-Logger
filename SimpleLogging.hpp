@@ -6,14 +6,22 @@
 
 using namespace std;
 
+
+
 class SimpleLogging
 {
 public:
 
-	void Log(const string& message);
-	void Log(const char* format, ...);
+	enum LogLevel {
+		ERROR, WARNING, INFO
+	};
+
+	void Log(LogLevel t_logLevel, const string& t_message);
+	void Log(LogLevel t_logLevel, const char* t_format, ...);
 
 	static SimpleLogging* Instance();
+
+	
 
 private:
 
